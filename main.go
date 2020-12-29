@@ -1,7 +1,7 @@
 package main
 
-import "github.com/naoking99/boty/presentation/router"
+import "github.com/naoking99/boty/presentation/routes"
 
 func main() {
-	router.HandleRequests()
+	routes.HandleRequests()
 }
