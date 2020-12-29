@@ -3,10 +3,17 @@ package controller
 import (
 	"fmt"
 	"net/http"
+
+	signup "github.com/naoking99/boty/app/signUp"
 )
 
 // SignUp hundles sign-up's request and pass it to Usecase.
 func SignUp(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Sign Up!!")
-	fmt.Println("Endpoint Hit: Sign Up!!")
+	if r.Method == http.MethodPost {
+		// p := signup.UseCase(signup.CreateParam(r.FormValue("email"), r.FormValue("password")))
+		p := signup.CreateParam(r.FormValue("email"), r.FormValue("password"))
+		signup.UseCase(p)
+		fmt.Println("Endpoint Hit: Sign Up!!")
+		fmt.Fprintf(w, "email is %s as Response", p.Email)
+	}
 }
