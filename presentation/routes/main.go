@@ -10,5 +10,6 @@ import (
 // HandleRequests handles http requests.
 func HandleRequests() {
 	http.HandleFunc("/", controller.GetHomePage)
+	http.HandleFunc("/sign-up", controller.SignUp)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
