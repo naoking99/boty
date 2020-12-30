@@ -14,6 +14,5 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 		p := signup.CreateParam(r.FormValue("email"), r.FormValue("password"))
 		signup.UseCase(p)
 		fmt.Println("Endpoint Hit: Sign Up!!")
-		fmt.Fprintf(w, "email is %s as Response", p.Email)
 	}
 }

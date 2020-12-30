@@ -5,6 +5,6 @@ import (
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase(param *Param) {
-	fmt.Printf("email is %s, password is %s in UseCase", param.Email, param.Password)
+func UseCase(p *Param) {
+	fmt.Printf("email is %s, password is %s in UseCase", p.email, p.password)
 }
