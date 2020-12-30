@@ -2,33 +2,20 @@ package signup
 
 import (
 	"context"
-	"fmt"
 	"log"
 
-	firebase "firebase.google.com/go"
 	"firebase.google.com/go/auth"
+	"github.com/naoking99/boty/utils/firebase"
 )
 
 // UseCase acts the use case of sign-up.
 func UseCase(p *Param) *auth.UserRecord {
-	fmt.Printf("email is %s, password is %s in UseCase", p.email, p.password)
-
-	ctx := context.Background()
-	app, err := firebase.NewApp(context.Background(), nil)
-	if err != nil {
-		log.Fatalf("error initializing app: %v\n", err)
-	}
-	client, err := app.Auth(ctx)
-	if err != nil {
-		log.Fatalf("error getting Auth client: %v\n", err)
-	}
-
 	params := (&auth.UserToCreate{}).
 		Email(p.email).
 		EmailVerified(false).
 		Password(p.password)
 
-	u, err := client.CreateUser(ctx, params)
+	u, err := firebase.AuthClient().CreateUser(context.Background(), params)
 	if err != nil {
 		log.Fatalf("error creating user: %v\n", err)
 	}
