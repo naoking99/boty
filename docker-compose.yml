@@ -6,3 +6,5 @@ services:
       - .:/go/src/boty
     ports:
       - "8080:8080"
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: "boty-dev-firebase-adminsdk.json"
