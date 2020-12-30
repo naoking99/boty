@@ -9,11 +9,11 @@ import (
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase(p *Param) *OutputData {
+func UseCase(i *InputData) *OutputData {
 	params := (&auth.UserToCreate{}).
-		Email(p.email).
+		Email(i.email).
 		EmailVerified(false).
-		Password(p.password)
+		Password(i.password)
 
 	u, err := firebase.AuthClient().CreateUser(context.Background(), params)
 	if err != nil {
