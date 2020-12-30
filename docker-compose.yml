@@ -7,4 +7,6 @@ services:
     ports:
       - "8080:8080"
     environment:
+      # Pass the path of credential file for Firebase to find credentials automatically.
+      # See https://cloud.google.com/docs/authentication/production#automatically
       GOOGLE_APPLICATION_CREDENTIALS: "boty-dev-firebase-adminsdk.json"
