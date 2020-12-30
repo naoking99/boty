@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -10,9 +11,11 @@ import (
 // SignUp hundles sign-up's request and pass it to Usecase.
 func SignUp(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		// p := signup.UseCase(signup.CreateParam(r.FormValue("email"), r.FormValue("password")))
-		p := signup.CreateParam(r.FormValue("email"), r.FormValue("password"))
-		signup.UseCase(p)
 		fmt.Println("Endpoint Hit: Sign Up!!")
+
+		p := signup.CreateParam(r.FormValue("email"), r.FormValue("password"))
+		u := signup.UseCase(p)
+
+		json.NewEncoder(w).Encode(u)
 	}
 }
