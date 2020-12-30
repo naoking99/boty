@@ -10,8 +10,8 @@ import (
 // SignUp hundles sign-up's request and pass it to Usecase.
 func SignUp(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		p := signup.CreateInputData(r.FormValue("email"), r.FormValue("password"))
-		o := signup.UseCase(p)
+		i := signup.CreateInputData(r.FormValue("email"), r.FormValue("password"))
+		o := signup.UseCase(i)
 
 		res := map[string]string{
 			"email": o.Email(),
