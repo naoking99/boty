@@ -10,3 +10,17 @@ services:
       # Pass the path of credential file for Firebase to find credentials automatically.
       # See https://cloud.google.com/docs/authentication/production#automatically
       GOOGLE_APPLICATION_CREDENTIALS: "boty-dev-firebase-adminsdk.json"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "4306:3306"
+    volumes:
+      - boty-mysql-data:/var/lib/mysql
+
+volumes:
+  boty-mysql-data: {}
