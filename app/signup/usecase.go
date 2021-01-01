@@ -9,7 +9,7 @@ import (
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase(i *InputData) *OutputData {
+func UseCase(i *Input) *OutputData {
 	params := (&auth.UserToCreate{}).
 		Email(i.email).
 		EmailVerified(false).
