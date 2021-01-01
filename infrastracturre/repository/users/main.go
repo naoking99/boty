@@ -1,12 +1,12 @@
-package repository
+package users
 
 import (
-	"github.com/naoking99/boty/domain"
+	"github.com/naoking99/boty/domain/user"
 	"github.com/naoking99/boty/utils/mysql"
 )
 
 // GetUsers is
-func GetUsers() *[]*domain.User {
+func GetAll() *[]*user.User {
 	db := mysql.GetDB()
 	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
@@ -14,7 +14,7 @@ func GetUsers() *[]*domain.User {
 	}
 	defer rows.Close()
 
-	users := []*domain.User{}
+	users := []*user.User{}
 
 	for rows.Next() {
 		var id int
@@ -25,7 +25,7 @@ func GetUsers() *[]*domain.User {
 			panic(err.Error())
 		}
 
-		users = append(users, domain.CreateUser(id, "testname", email))
+		users = append(users, user.New(id, "testname", email))
 	}
 
 	err = rows.Err()

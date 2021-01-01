@@ -5,7 +5,7 @@ type OutputData struct {
 	emails []string
 }
 
-// GetEmails is
-func (o OutputData) GetEmails() []string {
+// Emails is
+func (o OutputData) Emails() []string {
 	return o.emails
 }

@@ -1,4 +1,4 @@
-package domain
+package user
 
 // User is
 type User struct {
@@ -7,12 +7,12 @@ type User struct {
 	email string
 }
 
-// CreateUser is
-func CreateUser(id int, name string, email string) *User {
+// New is
+func New(id int, name string, email string) *User {
 	return &User{id: id, name: name, email: email}
 }
 
-// GetEmail is
-func (u *User) GetEmail() string {
+// Email is
+func (u *User) Email() string {
 	return u.email
 }

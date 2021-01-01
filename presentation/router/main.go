@@ -11,6 +11,6 @@ import (
 func HandleRequests() {
 	http.HandleFunc("/sign-up", controller.SignUp)
 	http.HandleFunc("/users", controller.User)
-	http.HandleFunc("/", controller.GetHomePage)
+	http.HandleFunc("/", controller.HomePage)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

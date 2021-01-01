@@ -6,7 +6,7 @@ type InputData struct {
 	password string
 }
 
-// CreateInputData create parameters for the use case.
-func CreateInputData(email string, password string) *InputData {
+// NewInputData create parameters for the use case.
+func NewInputData(email string, password string) *InputData {
 	return &InputData{email: email, password: password}
 }
