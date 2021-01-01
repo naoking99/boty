@@ -1,6 +1,8 @@
 package users
 
 import (
+	"fmt"
+
 	"github.com/naoking99/boty/domain/user"
 	"github.com/naoking99/boty/utils/mysql"
 )
@@ -37,4 +39,26 @@ func (a Accesser) GetAll() *[]*user.User {
 	}
 
 	return &users
+}
+
+// Save is
+func (a Accesser) Save(u *user.User) {
+	db := mysql.GetDB()
+
+	stmtInsert, err := db.Prepare("INSERT INTO users(email) VALUES(?)")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer stmtInsert.Close()
+
+	result, err := stmtInsert.Exec(u.Email())
+	if err != nil {
+		panic(err.Error())
+	}
+
+	lastInsertID, err := result.LastInsertId()
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(lastInsertID)
 }

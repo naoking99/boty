@@ -7,4 +7,5 @@ import (
 // Repository is
 type Repository interface {
 	GetAll() *[]*user.User
+	Save(u *user.User)
 }
