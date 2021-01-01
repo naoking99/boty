@@ -7,11 +7,11 @@ import (
 	"github.com/naoking99/boty/utils/mysql"
 )
 
-// Accesser is
-type Accesser struct{}
+// Repository is
+type Repository struct{}
 
 // GetAll is
-func (a Accesser) GetAll() *[]*user.User {
+func (r Repository) GetAll() *[]*user.User {
 	db := mysql.GetDB()
 	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
@@ -42,7 +42,7 @@ func (a Accesser) GetAll() *[]*user.User {
 }
 
 // Save is
-func (a Accesser) Save(u *user.User) {
+func (r Repository) Save(u *user.User) {
 	db := mysql.GetDB()
 
 	stmtInsert, err := db.Prepare("INSERT INTO users(email) VALUES(?)")
