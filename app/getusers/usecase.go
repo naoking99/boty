@@ -5,7 +5,7 @@ import (
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase() *OutputData {
+func UseCase() *Output {
 	users := users.GetAll()
 
 	emails := []string{}
@@ -14,5 +14,5 @@ func UseCase() *OutputData {
 		emails = append(emails, u.Email())
 	}
 
-	return &OutputData{emails: emails}
+	return &Output{emails: emails}
 }

@@ -9,7 +9,7 @@ import (
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase(i *Input) *OutputData {
+func UseCase(i *Input) *Output {
 	params := (&auth.UserToCreate{}).
 		Email(i.email).
 		EmailVerified(false).
@@ -20,5 +20,5 @@ func UseCase(i *Input) *OutputData {
 		log.Fatalf("error creating user: %v\n", err)
 	}
 
-	return &OutputData{email: u.Email}
+	return &Output{email: u.Email}
 }

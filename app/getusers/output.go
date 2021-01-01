@@ -1,11 +1,11 @@
 package getusers
 
-// OutputData is
-type OutputData struct {
+// Output is
+type Output struct {
 	emails []string
 }
 
 // Emails is
-func (o OutputData) Emails() []string {
+func (o Output) Emails() []string {
 	return o.emails
 }
