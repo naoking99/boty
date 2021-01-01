@@ -1,12 +1,12 @@
 package getusers
 
 import (
-	"github.com/naoking99/boty/infrastracturre/repository/users"
+	"github.com/naoking99/boty/app/repository/users"
 )
 
 // UseCase acts the use case of sign-up.
-func UseCase() *Output {
-	users := users.GetAll()
+func UseCase(usersRepo users.Repository) *Output {
+	users := usersRepo.GetAll()
 
 	emails := []string{}
 

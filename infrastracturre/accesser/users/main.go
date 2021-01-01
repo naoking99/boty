@@ -5,8 +5,11 @@ import (
 	"github.com/naoking99/boty/utils/mysql"
 )
 
-// GetUsers is
-func GetAll() *[]*user.User {
+// Accesser is
+type Accesser struct{}
+
+// GetAll is
+func (a Accesser) GetAll() *[]*user.User {
 	db := mysql.GetDB()
 	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
