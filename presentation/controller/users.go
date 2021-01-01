@@ -10,7 +10,8 @@ import (
 
 // User hundles sign-up's request and pass it to Usecase.
 func User(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
+	switch r.Method {
+	case http.MethodGet:
 		o := getusers.UseCase(users.Accesser{})
 		json.NewEncoder(w).Encode(o.Emails())
 	}
