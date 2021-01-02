@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/naoking99/boty/domain/user"
-	"github.com/naoking99/boty/utils/mysql"
+	"github.com/naoking99/boty/infrastracture/config/mysql"
 )
 
 // Repository is

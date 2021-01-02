@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/naoking99/boty/app/getusers"
-	"github.com/naoking99/boty/infrastracture/users"
+	"github.com/naoking99/boty/infrastracture/datasource/users"
 )
 
 // User hundles sign-up's request and pass it to Usecase.
