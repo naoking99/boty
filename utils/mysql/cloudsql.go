@@ -38,8 +38,8 @@ func mustGetenv(k string) string {
 	return v
 }
 
-// initSocketConnectionPool initializes a Unix socket connection pool for
-// a Cloud SQL instance of SQL Server.
+// initSocketConnectionPool initializes a Unix socket connection pool for a Cloud SQL instance of SQL Server.
+// Use This Unix socket connection from Google App Engine.
 func initSocketConnectionPool() (*sql.DB, error) {
 	// [START cloud_sql_mysql_databasesql_create_socket]
 	var (
@@ -71,8 +71,9 @@ func initSocketConnectionPool() (*sql.DB, error) {
 	// [END cloud_sql_mysql_databasesql_create_socket]
 }
 
-// InitTCPConnectionPool initializes a TCP connection pool for a Cloud SQL
-// instance of SQL Server.
+// InitTCPConnectionPool initializes a TCP connection pool for a Cloud SQL instance of SQL Server.
+// Use this TCP connection when you connect to Cloud SQL from local proxy with `cloud_sql_proxy`.
+// See the details here. https://cloud.google.com/sql/docs/mysql/quickstart-proxy-test#macos-64-bit
 func initTCPConnectionPool() (*sql.DB, error) {
 	// [START cloud_sql_mysql_databasesql_create_tcp]
 	var (
