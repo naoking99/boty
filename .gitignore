@@ -1,2 +1,4 @@
 .envrc
+app.yaml
+cloud_sql_proxy
 boty-dev-firebase-adminsdk.json

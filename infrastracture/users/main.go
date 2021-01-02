@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/naoking99/boty/domain/user"
-	"github.com/naoking99/boty/utils/mysql"
+	"github.com/naoking99/boty/utils/cloudsql"
 )
 
 // Repository is
@@ -12,7 +12,7 @@ type Repository struct{}
 
 // GetAll is
 func (r Repository) GetAll() *[]*user.User {
-	db := mysql.GetDB()
+	db := cloudsql.DBPool()
 	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
 		panic(err.Error())
@@ -43,7 +43,7 @@ func (r Repository) GetAll() *[]*user.User {
 
 // Save is
 func (r Repository) Save(u *user.User) {
-	db := mysql.GetDB()
+	db := cloudsql.DBPool()
 
 	stmtInsert, err := db.Prepare("INSERT INTO users(email) VALUES(?)")
 	if err != nil {
