@@ -5,25 +5,15 @@ import (
 	"time"
 )
 
-var db *sql.DB
-
-// InitMySQL is
-func InitMySQL() {
-	_db, err := sql.Open("mysql", "root:password@tcp(mysql:3306)/boty-dev")
+func initLocalMySQL() *sql.DB {
+	dbPool, err := sql.Open("mysql", "root:password@tcp(mysql:3306)/boty-dev")
 	if err != nil {
 		panic(err.Error())
 	}
 
-	db = _db
+	dbPool.SetConnMaxLifetime(time.Minute * 3)
+	dbPool.SetMaxOpenConns(10)
+	dbPool.SetMaxIdleConns(10)
 
-	db.SetConnMaxLifetime(time.Minute * 3)
-	db.SetMaxOpenConns(10)
-	db.SetMaxIdleConns(10)
-
-	println("Initilized MySQL!")
-}
-
-// GetDB is
-func GetDB() *sql.DB {
-	return db
+	return dbPool
 }

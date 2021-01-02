@@ -1,4 +1,4 @@
-package cloudsql
+package mysql
 
 import (
 	"database/sql"
@@ -38,11 +38,9 @@ func mustGetenv(k string) string {
 	return v
 }
 
-var db *sql.DB
-
-// InitSocketConnectionPool initializes a Unix socket connection pool for
+// initSocketConnectionPool initializes a Unix socket connection pool for
 // a Cloud SQL instance of SQL Server.
-func InitSocketConnectionPool() (*sql.DB, error) {
+func initSocketConnectionPool() (*sql.DB, error) {
 	// [START cloud_sql_mysql_databasesql_create_socket]
 	var (
 		dbUser                 = mustGetenv("DB_USER")                  // e.g. 'my-db-user'
@@ -69,14 +67,13 @@ func InitSocketConnectionPool() (*sql.DB, error) {
 	configureConnectionPool(dbPool)
 	// [END_EXCLUDE]
 
-	db = dbPool
 	return dbPool, nil
 	// [END cloud_sql_mysql_databasesql_create_socket]
 }
 
 // InitTCPConnectionPool initializes a TCP connection pool for a Cloud SQL
 // instance of SQL Server.
-func InitTCPConnectionPool() (*sql.DB, error) {
+func initTCPConnectionPool() (*sql.DB, error) {
 	// [START cloud_sql_mysql_databasesql_create_tcp]
 	var (
 		dbUser    = mustGetenv("DB_USER")     // e.g. 'my-db-user'
@@ -99,12 +96,6 @@ func InitTCPConnectionPool() (*sql.DB, error) {
 	configureConnectionPool(dbPool)
 	// [END_EXCLUDE]
 
-	db = dbPool
 	return dbPool, nil
 	// [END cloud_sql_mysql_databasesql_create_tcp]
-}
-
-// DBPool is
-func DBPool() *sql.DB {
-	return db
 }
