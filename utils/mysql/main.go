@@ -8,15 +8,15 @@ import (
 
 var dbPool *sql.DB
 
-// InitMySQL is
-func InitMySQL() {
+// InitConnectionPool is
+func InitConnectionPool() {
 	const k = "SERVER_ENV"
 	v := os.Getenv(k)
 
 	switch v {
 	case "dev":
 		println("This is development environment nooow!")
-		dbPool = initLocalMySQL()
+		dbPool = initLocalConnectionPool()
 	case "stg":
 		println("This is staging environment nooow!")
 		var err error

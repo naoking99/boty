@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func initLocalMySQL() *sql.DB {
+func initLocalConnectionPool() *sql.DB {
 	dbPool, err := sql.Open("mysql", "root:password@tcp(mysql:3306)/boty-dev")
 	if err != nil {
 		panic(err.Error())
